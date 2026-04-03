@@ -1,22 +1,33 @@
-const MODULE_ID = "arcflight";
+import { ARCFLIGHT_MODULE_ID } from "./config/constants.js";
+import {
+  createDefaultShipState,
+  getShipState,
+  ensureShipState,
+  setShipState
+} from "./state/ship-state.js";
 
 Hooks.once("init", () => {
-  console.log("[Arcflight] Module initialized");
+  console.log("[Arcflight] init");
 });
 
 Hooks.once("setup", () => {
   game.arcflight = {
-    moduleId: MODULE_ID,
-    getVersion: () => game.modules.get(MODULE_ID)?.version ?? "unknown",
-    isActive: () => game.modules.get(MODULE_ID)?.active ?? false,
+    moduleId: ARCFLIGHT_MODULE_ID,
+    getVersion: () => game.modules.get(ARCFLIGHT_MODULE_ID)?.version ?? "unknown",
+    isActive: () => game.modules.get(ARCFLIGHT_MODULE_ID)?.active ?? false,
     debugSummary: () => ({
-      moduleId: MODULE_ID,
-      version: game.modules.get(MODULE_ID)?.version ?? "unknown",
-      active: game.modules.get(MODULE_ID)?.active ?? false
-    })
+      moduleId: ARCFLIGHT_MODULE_ID,
+      version: game.modules.get(ARCFLIGHT_MODULE_ID)?.version ?? "unknown",
+      active: game.modules.get(ARCFLIGHT_MODULE_ID)?.active ?? false,
+      systemId: game.system?.id ?? "unknown"
+    }),
+    createDefaultShipState,
+    getShipState,
+    ensureShipState,
+    setShipState
   };
 });
 
 Hooks.once("ready", () => {
-  console.log("[Arcflight]", game.arcflight?.debugSummary?.());
+  console.log("[Arcflight] ready", game.arcflight?.debugSummary?.());
 });
