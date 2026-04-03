@@ -2,17 +2,18 @@
   "id": "arcflight",
   "title": "Arcflight",
   "version": "0.0.1",
-  "description": "Initial scaffold for the Arcflight Foundry module.",
-  "authors": [
-    {
-      "name": "Arcflight Team"
-    }
-  ],
   "compatibility": {
-    "minimum": "12",
-    "verified": "12"
+    "minimum": "13.348",
+    "verified": "13.351"
   },
-  "scripts": [
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e"
+      }
+    ]
+  },
+  "esmodules": [
     "scripts/main.js"
   ]
 }
