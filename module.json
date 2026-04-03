@@ -1,0 +1,18 @@
+{
+  "id": "arcflight",
+  "title": "Arcflight",
+  "version": "0.0.1",
+  "description": "Initial scaffold for the Arcflight Foundry module.",
+  "authors": [
+    {
+      "name": "Arcflight Team"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "scripts": [
+    "scripts/main.js"
+  ]
+}
