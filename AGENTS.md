@@ -20,3 +20,10 @@ This repository currently contains only the initial Arcflight Foundry module sca
 - modifiers change math
 - predicates decide applicability
 - slugs identify effect sources
+
+## Terminology spec authority
+- Follow `docs/flag-terminology.md` for all future Arcflight state and math naming.
+- Flags store state.
+- Selectors target math.
+- Modifiers change math.
+- Any future roll-affecting work must use consistent selector/slug/predicate language.
