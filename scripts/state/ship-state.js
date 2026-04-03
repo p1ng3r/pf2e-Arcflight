@@ -41,9 +41,20 @@ export function createDefaultShipState() {
 function applyTopLevelBuckets(baseState, patch) {
   if (!patch || typeof patch !== "object") return baseState;
 
+  const isPlainObject = (value) =>
+    value !== null && typeof value === "object" && !Array.isArray(value);
+
   const nextState = { ...baseState };
   for (const [key, value] of Object.entries(patch)) {
     if (!Object.hasOwn(baseState, key)) continue;
+
+    const baseBucket = baseState[key];
+    if (isPlainObject(baseBucket) && isPlainObject(value)) {
+      // Preserve default keys while allowing one-level bucket overrides.
+      nextState[key] = { ...baseBucket, ...value };
+      continue;
+    }
+
     nextState[key] = value;
   }
 
