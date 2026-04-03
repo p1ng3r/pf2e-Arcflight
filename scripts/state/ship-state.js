@@ -41,8 +41,11 @@ export function createDefaultShipState() {
 function applyTopLevelBuckets(baseState, patch) {
   if (!patch || typeof patch !== "object") return baseState;
 
-  const isPlainObject = (value) =>
-    value !== null && typeof value === "object" && !Array.isArray(value);
+  const isPlainObject = (value) => {
+    if (value === null || typeof value !== "object" || Array.isArray(value)) return false;
+    const prototype = Object.getPrototypeOf(value);
+    return prototype === Object.prototype || prototype === null;
+  };
 
   const nextState = { ...baseState };
   for (const [key, value] of Object.entries(patch)) {
