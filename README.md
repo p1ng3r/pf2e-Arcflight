@@ -7,20 +7,21 @@ Initial scaffold for the Arcflight Foundry VTT module.
 - `module.json` — Foundry module manifest.
 - `scripts/main.js` — module entry script.
 - `scripts/config/constants.js` — module constants.
-- `scripts/state/ship-state.js` — ship state flag helpers.
+- `scripts/state/ship-state.js` — ship state and ship actor integration helpers.
 - `AGENTS.md` — repository agent instructions.
 
 ## Ship state shell
 
 Arcflight currently stores persistent ship state on Actor flags at `flags.arcflight.ship`.
 
-The current build only provides a ship-state shell and API helpers on `game.arcflight`.
+The current build provides a ship-state shell and API helpers on `game.arcflight`.
 
 Example Foundry console usage:
 
 ```js
-const actor = game.actors.getName("Your Ship Name");
-await game.arcflight.ensureShipState(actor);
+const actor = game.actors.getName("Courier Sloop Test Ship");
+await game.arcflight.initializeShipActor(actor);
+game.arcflight.isShipActor(actor);
 game.arcflight.getShipState(actor);
 ```
 

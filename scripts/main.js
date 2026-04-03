@@ -3,7 +3,9 @@ import {
   createDefaultShipState,
   getShipState,
   ensureShipState,
-  setShipState
+  setShipState,
+  isShipActor,
+  initializeShipActor
 } from "./state/ship-state.js";
 
 Hooks.once("init", () => {
@@ -24,7 +26,9 @@ Hooks.once("setup", () => {
     createDefaultShipState,
     getShipState,
     ensureShipState,
-    setShipState
+    setShipState,
+    isShipActor,
+    initializeShipActor
   };
 });
 
